@@ -42,22 +42,6 @@ ecommerce-db/
 - MySQL Workbench or command-line access
 - Git/GitHub account
 
----
-
-## 🛠️ Tools & Technologies
-- **ERD Design**: [dbdiagram.io](https://dbdiagram.io)
-- **Database**: MySQL
-- **Collaboration**: GitHub, Zoom/Google Meet
-- **Documentation**: Markdown
-
----
-
-## 🚨 Getting Started
-
-### Prerequisites
-- MySQL Server (8.0+ recommended)
-- MySQL Workbench or command-line access
-- Git/GitHub account
 
 ### Installation
 1. **Clone the Repository**:
@@ -73,34 +57,84 @@ ecommerce-db/
    USE ecommerce;
    SOURCE sql/ecommerce.sql;
 
-### 🔄 Data Flow
-Product Setup: 
-Brand → Product Category → Product → Product Image
+### 🔄 Data Flow 
+-  Product Setup
 
-Variations & Inventory:
-Product → Product Variation (Color/Size) → Product Item (SKU/Stock)
+  Flow:
+      
+  Brand → Product Category → Product → Product Image
+  Steps:
+  1. Create a Brand:
+     ```bash
+     INSERT INTO brand (name) VALUES ('Nike');  
+ 2. Add a Product Category:
+     ```bash
+     INSERT INTO product_category (category_name) VALUES ('Shoes');       
+  3. Add a Product:
+     ```bash
+     INSERT INTO product (product_name, brand_id, category_id, base_price)  
+     VALUES ('Air Max', 1, 1, 120.00);  
+  4. Upload Product Images:
+     ```bash
+     INSERT INTO product_image (product_id, image_url)  
+     VALUES (1, 'https://example.com/airmax.jpg');
+     
+     
+-  Variations & Inventory:
+  
+  Flow:
+   
+  Product → Product Variation (Color/Size) → Product Item (SKU/Stock)
+  Steps:
+  1. Define Colors/Sizes:
+       ```bash
+       INSERT INTO color (color_name) VALUES ('Red');  
+       INSERT INTO size_option (size_category_id, size_value) VALUES (1, '10');
+  2. Create a Variation:
+        ```bash
+        INSERT INTO product_variation (product_id, color_id, size_id)  
+        VALUES (1, 1, 1);
+  3. Track Inventory:
+        ```bash
+        INSERT INTO product_item (variation_id, sku, quantity_in_stock)  
+        VALUES (1, 'NIKE-AIRMAX-RED-10', 50);
 
-Attributes:
-Product → Product Attribute → Attribute Category/Type
+          
+-  Attributes:
+  
+   Flow:
+
+   Product → Product Attribute → Attribute Category/Type
+   Steps:
+   1. Add Attribute Categories/Types:
+       ```bash
+       INSERT INTO attribute_category (category_name) VALUES ('Material');  
+       INSERT INTO attribute_type (type_name) VALUES ('Text');
+   2. Assign Attributes to Products:
+       ```bash
+       INSERT INTO product_attribute (product_id, attribute_name, attribute_value, attribute_category_id, attribute_type_id)  
+       VALUES (1, 'Upper', 'Leather', 1, 1);  
 
  ### 🧪 Testing the Database
 Run sample queries to validate the design:
----Example: Add a Nike product
-INSERT INTO brand (name) VALUES ('Nike');
-INSERT INTO product_category (category_name) VALUES ('Shoes');
-INSERT INTO product (product_name, brand_id, category_id, base_price)
-VALUES ('Air Max', 1, 1, 150.00);
+    ```bash
+
+    ---Example: Add a Nike product
+    INSERT INTO brand (name) VALUES ('Nike');
+    INSERT INTO product_category (category_name) VALUES ('Shoes');
+    INSERT INTO product (product_name, brand_id, category_id, base_price)
+    VALUES ('Air Max', 1, 1, 150.00);
 
 
 ### 👏 Contributors
-[Name 1](GitHub Profile Link) - ERD Design
+[Awojobi Victor Ololade] - ERD Design
 
-[Name 2](GitHub Profile Link) - SQL Implementation
+[Awojobi Victor Ololade] - SQL Implementation
 
-[Name 3](GitHub Profile Link) - Documentation
+[Stephen] - Documentation
 
-[Name 4](GitHub Profile Link) - Testing
+[Stephen] - Testing
 
 
-###📜 License
+### 📜 License
 This project is licensed under the MIT License. See LICENSE for details.
