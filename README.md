@@ -65,12 +65,16 @@ ecommerce-db/
    git clone https://github.com/yourgroup/repo.git
    cd ecommerce-db
    Create the Database:
-
-
-
+2. **Create the Database**:
+   ```bash
+   -- Via MySQL Command Line:
+   mysql -u [username] -p
+   CREATE DATABASE ecommerce;
+   USE ecommerce;
+   SOURCE sql/ecommerce.sql;
 
 ### 🔄 Data Flow
-Product Setup:
+Product Setup: 
 Brand → Product Category → Product → Product Image
 
 Variations & Inventory:
@@ -81,7 +85,6 @@ Product → Product Attribute → Attribute Category/Type
 
  ### 🧪 Testing the Database
 Run sample queries to validate the design:
-```
 ---Example: Add a Nike product
 INSERT INTO brand (name) VALUES ('Nike');
 INSERT INTO product_category (category_name) VALUES ('Shoes');
