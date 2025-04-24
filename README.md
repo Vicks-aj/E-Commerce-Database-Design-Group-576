@@ -131,7 +131,7 @@ Run sample queries to validate the design:
 
 [Awojobi Victor Ololade] - SQL Implementation
 
-[Stephen] - Documentation
+[Christopher Ikwumonu Stephen] - Documentation
 
-[Stephen] - Testing
+[Christopher Ikwumonu Stephen] - Testing
 
